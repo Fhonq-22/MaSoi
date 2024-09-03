@@ -2,31 +2,31 @@
   "phe_dan_lang": [
     {
       "ten": "Dân làng",
-      "mo_ta": "Dân làng chiếm đại đa số trong các nhân vật và nhiệm vụ của dân làng là làm sao chỉ chứng được ai là ma sói đang đội lốt người dân để mang sói đi treo cổ. Người dân có nhiều thời gian để đưa ra suy luận, phán đoán trước khi đưa ra lựa chọn sau cùng. Sẽ bị chết nếu bị Ma sói cắn trúng.",
+      "mo_ta": "Không có năng lực đặc biệt nào. Ban ngày nhiệm vụ của Dân làng là đưa ra suy luận, phán đoán ai là Ma sói để mang đi treo cổ.",
       "diem": 1,
       "hinh_anh": "../libs/img/DanLang.jpg"
     },
     {
       "ten": "Tiên tri",
-      "mo_ta": "Buổi tối tiên tri sẽ được quản trò gọi dậy và có quyền đoán trước ai là Ma sói. Nếu đúng người quản trò sẽ gật đầu hoặc giơ tay đồng ý, nếu không phải quản trò sẽ lắc đầu. Nhiệm vụ của tiên tri là phải ra mặt đúng lúc, dùng lập luận hướng dân làng tìm ra Ma sói. Sẽ bị chết nếu bị Ma sói cắn trúng.",
+      "mo_ta": "Buổi tối Tiên tri có thể xem ai đó có là Ma sói hay không. Tiên tri là phải ra mặt đúng lúc, dùng lập luận giúp Dân làng tìm ra Ma sói.",
       "diem": 5,
       "hinh_anh": "../libs/img/TienTri.jpg"
     },
     {
       "ten": "Bảo vệ",
-      "mo_ta": "Mỗi đêm Quản trò sẽ gọi Bảo vệ dậy. Nhiệm vụ của Bảo vệ là lựa chọn 1 người để cứu, Bảo vệ có thể chọn tự cứu mình. Người được Bảo vệ cứu nếu như bị Ma sói cắn thì vẫn sẽ sống sót vào sáng hôm sau.",
+      "mo_ta": "Mỗi đêm Bảo vệ chọn 1 người để cứu. Nếu người đó bị Ma sói cắn thì vẫn sẽ sống. Không được bảo vệ 1 người trong 2 đêm liên tiếp.",
       "diem": 4,
       "hinh_anh": "../libs/img/BaoVe.jpg"
     },
     {
       "ten": "Thợ săn",
-      "mo_ta": "Thợ săn có quyền chọn 1 người để giết theo nếu bị Ma sói cắn hoặc bị treo cổ. Người được chọn sẽ chết theo thợ săn.",
+      "mo_ta": "Thợ săn có quyền chọn 1 người để chết theo nếu bị Ma sói cắn hoặc bị treo cổ. Người được chọn sẽ chết theo thợ săn.",
       "diem": 4,
       "hinh_anh": "../libs/img/ThoSan.jpg"
     },
     {
       "ten": "Phù Thủy",
-      "mo_ta": "Phù Thủy có 2 lọ thuốc: 1 lọ cứu người và 1 lọ giết người. Phù Thủy có thể chọn cứu người bị sói cắn hoặc dùng lọ thuốc độc để giết người.",
+      "mo_ta": "Phù Thủy có thể dùng lọ thuốc giải để cứu người bị sói cắn hoặc dùng lọ thuốc độc để giết người. Mỗi lọ chỉ được dùng 1 lần.",
       "diem": 5,
       "hinh_anh": "../libs/img/PhuThuy.jpg"
     },
@@ -38,7 +38,7 @@
     },
     {
       "ten": "Cô Bé",
-      "mo_ta": "Cô Bé có thể nhìn trộm vào ban đêm để biết ai là Ma sói. Tuy nhiên, nếu bị Ma sói phát hiện, cô bé sẽ bị giết.",
+      "mo_ta": "Cô Bé có thể nhìn trộm vào ban đêm để biết ai là Ma sói. Tuy nhiên, nếu bị Ma sói phát hiện, cô bé có thể bị giết.",
       "diem": 2,
       "hinh_anh": "../libs/img/CoBe.jpg"
     }
@@ -46,13 +46,13 @@
   "phe_soi": [
     {
       "ten": "Sói thường",
-      "mo_ta": "Phe ma sói có nhiệm vụ giết 1 người dân mỗi đêm. Ma sói có thể chọn không cắn ai hoặc tàn sát lẫn nhau.",
+      "mo_ta": "Ma sói có nhiệm vụ giết 1 người dân mỗi đêm. Ma sói có thể chọn không cắn ai hoặc tàn sát lẫn nhau.",
       "diem": -6,
       "hinh_anh": "../libs/img/SoiThuong.jpg"
     },
     {
       "ten": "Sói con",
-      "mo_ta": "Sói con giống Sói thường, nhưng nếu Sói con chết, đêm hôm sau sói sẽ cắn hai người liên tiếp.",
+      "mo_ta": "Giống Sói thường, nhưng nếu Sói con chết, đêm hôm sau sói sẽ cắn hai người liên tiếp.",
       "diem": -7,
       "hinh_anh": "../libs/img/SoiCon.jpg"
     }
@@ -66,13 +66,13 @@
     },
     {
       "ten": "Sói trắng",
-      "mo_ta": "Sói trắng thức dậy cùng với Sói thường, nhưng cứ hai đêm một lần có thể giết một Ma Sói khác. Nhiệm vụ của Sói trắng là trở thành người duy nhất còn sống.",
+      "mo_ta": "Thức dậy cùng với Sói thường, cứ hai đêm thì có thể giết một Ma Sói khác. Nhiệm vụ là trở thành con sói duy nhất còn sống.",
       "diem": -8,
       "hinh_anh": "../libs/img/SoiTrang.jpg"
     },
     {
       "ten": "Ăn trộm",
-      "mo_ta": "Ăn trộm sẽ được gọi trong đêm đầu tiên và chọn một trong hai vai chức năng khác. Nếu một trong hai vai là Sói, Ăn trộm bắt buộc phải chọn Sói.",
+      "mo_ta": "Sẽ được gọi trong đêm đầu tiên và chọn một trong hai vai trò khác. Nếu một trong hai vai trò là Sói thì bắt buộc phải chọn Sói.",
       "diem": -5,
       "hinh_anh": "../libs/img/AnTrom.jpg"
     }
