@@ -37,12 +37,6 @@
       "hinh_anh": "../libs/img/Cupid.jpg"
     },
     {
-      "ten": "Cảnh sát trưởng",
-      "mo_ta": "Cảnh sát trưởng có quyền bỏ phiếu được tính là 2 phiếu. Nếu chết, cảnh sát trưởng có quyền chuyển quyền cho người khác.",
-      "diem": 3,
-      "hinh_anh": "../libs/img/CanhSatTruong.jpg"
-    },
-    {
       "ten": "Cô Bé",
       "mo_ta": "Cô Bé có thể nhìn trộm vào ban đêm để biết ai là Ma sói. Tuy nhiên, nếu bị Ma sói phát hiện, cô bé sẽ bị giết.",
       "diem": 2,
@@ -64,12 +58,6 @@
     }
   ],
   "phe_thu_ba": [
-    {
-      "ten": "Cặp đôi khác phe yêu nhau",
-      "mo_ta": "Cặp đôi này được Cupid ghép đôi và trở thành phe thứ ba với nhiệm vụ trở thành hai người duy nhất còn sống.",
-      "diem": -4,
-      "hinh_anh": "../libs/img/CapDoiKhacPhe.jpg"
-    },
     {
       "ten": "Nửa người nửa sói",
       "mo_ta": "Ban đầu thuộc phe dân làng, nhưng nếu bị Ma Sói cắn sẽ biến thành Ma Sói.",
