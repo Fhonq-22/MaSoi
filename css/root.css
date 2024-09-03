@@ -1,0 +1,11 @@
+/* root.css */
+:root {
+    /* Màu sắc chủ đạo trong trò Ma Sói */
+    --background-color: #0c0c0d;
+    --text-color: #eaeaea;
+    --highlight-color: #ff4500;
+    --button-bg: #4a4e69;
+    --button-hover-bg: #9a8c98;
+    --border-color: #22223b;
+    --header-color: #ffb703;
+}
