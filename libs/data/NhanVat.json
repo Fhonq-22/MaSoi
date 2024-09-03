@@ -9,31 +9,31 @@
     {
       "ten": "Tiên tri",
       "mo_ta": "Buổi tối Tiên tri có thể xem ai đó có là Ma sói hay không. Tiên tri là phải ra mặt đúng lúc, dùng lập luận giúp Dân làng tìm ra Ma sói.",
-      "diem": 5,
+      "diem": 4,
       "hinh_anh": "../libs/img/TienTri.jpg"
     },
     {
       "ten": "Bảo vệ",
       "mo_ta": "Mỗi đêm Bảo vệ chọn 1 người để cứu. Nếu người đó bị Ma sói cắn thì vẫn sẽ sống. Không được bảo vệ 1 người trong 2 đêm liên tiếp.",
-      "diem": 4,
+      "diem": 3,
       "hinh_anh": "../libs/img/BaoVe.jpg"
     },
     {
       "ten": "Thợ săn",
       "mo_ta": "Thợ săn có quyền chọn 1 người để chết theo nếu bị Ma sói cắn hoặc bị treo cổ. Người được chọn sẽ chết theo thợ săn.",
-      "diem": 4,
+      "diem": 3,
       "hinh_anh": "../libs/img/ThoSan.jpg"
     },
     {
       "ten": "Phù Thủy",
       "mo_ta": "Phù Thủy có thể dùng lọ thuốc giải để cứu người bị sói cắn hoặc dùng lọ thuốc độc để giết người. Mỗi lọ chỉ được dùng 1 lần.",
-      "diem": 5,
+      "diem": 4,
       "hinh_anh": "../libs/img/PhuThuy.jpg"
     },
     {
       "ten": "Cupid (Thần Tình Yêu)",
       "mo_ta": "Cupid sẽ ghép đôi 2 người bất kỳ với nhau. Nếu 1 người chết, người còn lại cũng sẽ chết theo.",
-      "diem": 3,
+      "diem": 2,
       "hinh_anh": "../libs/img/Cupid.jpg"
     },
     {
@@ -61,7 +61,7 @@
     {
       "ten": "Nửa người nửa sói",
       "mo_ta": "Ban đầu thuộc phe dân làng, nhưng nếu bị Ma Sói cắn sẽ biến thành Ma Sói.",
-      "diem": -6,
+      "diem": -5,
       "hinh_anh": "../libs/img/NuaNguoiNuaSoi.jpg"
     },
     {
@@ -73,7 +73,7 @@
     {
       "ten": "Ăn trộm",
       "mo_ta": "Sẽ được gọi trong đêm đầu tiên và chọn một trong hai vai trò khác. Nếu một trong hai vai trò là Sói thì bắt buộc phải chọn Sói.",
-      "diem": -5,
+      "diem": -4,
       "hinh_anh": "../libs/img/AnTrom.jpg"
     }
   ]
