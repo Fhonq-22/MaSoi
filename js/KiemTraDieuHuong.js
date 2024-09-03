@@ -1,6 +1,6 @@
 // js/KiemTraDieuHuong.js
 
-function navigateTo(url) {
+function dieuHuongDen(url) {
     fetch(url)
         .then(response => {
             if (response.ok) {
