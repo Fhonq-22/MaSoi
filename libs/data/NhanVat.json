@@ -4,43 +4,43 @@
       "ten": "Dân làng",
       "mo_ta": "Không có năng lực đặc biệt nào. Ban ngày nhiệm vụ của Dân làng là đưa ra suy luận, phán đoán ai là Ma sói để mang đi treo cổ.",
       "diem": 1,
-      "hinh_anh": "../libs/img/DanLang.jpg"
+      "hinh_anh": "../MaSoi/libs/img/DanLang.jpg"
     },
     {
       "ten": "Tiên tri",
       "mo_ta": "Buổi tối Tiên tri có thể xem ai đó có là Ma sói hay không. Tiên tri là phải ra mặt đúng lúc, dùng lập luận giúp Dân làng tìm ra Ma sói.",
       "diem": 4,
-      "hinh_anh": "../libs/img/TienTri.jpg"
+      "hinh_anh": "../MaSoi/libs/img/TienTri.jpg"
     },
     {
       "ten": "Bảo vệ",
       "mo_ta": "Mỗi đêm Bảo vệ chọn 1 người để cứu. Nếu người đó bị Ma sói cắn thì vẫn sẽ sống. Không được bảo vệ 1 người trong 2 đêm liên tiếp.",
       "diem": 3,
-      "hinh_anh": "../libs/img/BaoVe.jpg"
+      "hinh_anh": "../MaSoi/libs/img/BaoVe.jpg"
     },
     {
       "ten": "Thợ săn",
-      "mo_ta": "Thợ săn có quyền chọn 1 người để chết theo nếu bị Ma sói cắn hoặc bị treo cổ. Người được chọn sẽ chết theo thợ săn.",
+      "mo_ta": "Có quyền chọn 1 người để chết theo nếu bị Ma sói cắn hoặc bị treo cổ. Người được chọn sẽ chết theo Thợ săn.",
       "diem": 3,
-      "hinh_anh": "../libs/img/ThoSan.jpg"
+      "hinh_anh": "../MaSoi/libs/img/ThoSan.jpg"
     },
     {
       "ten": "Phù Thủy",
       "mo_ta": "Phù Thủy có thể dùng lọ thuốc giải để cứu người bị sói cắn hoặc dùng lọ thuốc độc để giết người. Mỗi lọ chỉ được dùng 1 lần.",
       "diem": 4,
-      "hinh_anh": "../libs/img/PhuThuy.jpg"
+      "hinh_anh": "../MaSoi/libs/img/PhuThuy.jpg"
     },
     {
       "ten": "Cupid (Thần Tình Yêu)",
       "mo_ta": "Cupid sẽ ghép đôi 2 người bất kỳ với nhau. Nếu 1 người chết, người còn lại cũng sẽ chết theo.",
       "diem": 2,
-      "hinh_anh": "../libs/img/Cupid.jpg"
+      "hinh_anh": "../MaSoi/libs/img/Cupid.jpg"
     },
     {
       "ten": "Cô Bé",
-      "mo_ta": "Cô Bé có thể nhìn trộm vào ban đêm để biết ai là Ma sói. Tuy nhiên, nếu bị Ma sói phát hiện, cô bé có thể bị giết.",
+      "mo_ta": "Có thể nhìn trộm vào ban đêm để biết ai là Ma sói. Tuy nhiên, nếu bị Ma sói phát hiện, Cô bé có thể bị giết.",
       "diem": 2,
-      "hinh_anh": "../libs/img/CoBe.jpg"
+      "hinh_anh": "../MaSoi/libs/img/CoBe.jpg"
     }
   ],
   "phe_soi": [
@@ -48,13 +48,13 @@
       "ten": "Sói thường",
       "mo_ta": "Ma sói có nhiệm vụ giết 1 người dân mỗi đêm. Ma sói có thể chọn không cắn ai hoặc tàn sát lẫn nhau.",
       "diem": -6,
-      "hinh_anh": "../libs/img/SoiThuong.jpg"
+      "hinh_anh": "../MaSoi/libs/img/SoiThuong.jpg"
     },
     {
       "ten": "Sói con",
       "mo_ta": "Giống Sói thường, nhưng nếu Sói con chết, đêm hôm sau sói sẽ cắn hai người liên tiếp.",
       "diem": -7,
-      "hinh_anh": "../libs/img/SoiCon.jpg"
+      "hinh_anh": "../MaSoi/libs/img/SoiCon.jpg"
     }
   ],
   "phe_thu_ba": [
@@ -62,19 +62,19 @@
       "ten": "Nửa người nửa sói",
       "mo_ta": "Ban đầu thuộc phe dân làng, nhưng nếu bị Ma Sói cắn sẽ biến thành Ma Sói.",
       "diem": -5,
-      "hinh_anh": "../libs/img/NuaNguoiNuaSoi.jpg"
+      "hinh_anh": "../MaSoi/libs/img/NuaNguoiNuaSoi.jpg"
     },
     {
       "ten": "Sói trắng",
       "mo_ta": "Thức dậy cùng với Sói thường, cứ hai đêm thì có thể giết một Ma Sói khác. Nhiệm vụ là trở thành con sói duy nhất còn sống.",
       "diem": -8,
-      "hinh_anh": "../libs/img/SoiTrang.jpg"
+      "hinh_anh": "../MaSoi/libs/img/SoiTrang.jpg"
     },
     {
       "ten": "Ăn trộm",
       "mo_ta": "Sẽ được gọi trong đêm đầu tiên và chọn một trong hai vai trò khác. Nếu một trong hai vai trò là Sói thì bắt buộc phải chọn Sói.",
       "diem": -4,
-      "hinh_anh": "../libs/img/AnTrom.jpg"
+      "hinh_anh": "../MaSoi/libs/img/AnTrom.jpg"
     }
   ]
 }
