@@ -4,6 +4,12 @@
     "Sói thường": 1,
     "Dân làng": 2
   },
+  "4": {
+    "Tiên tri": 1,
+    "Sói thường": 1,
+    "Bảo vệ": 1
+    "Dân làng": 1
+  },
   "5": {
     "Tiên tri": 1,
     "Sói thường": 1,
@@ -23,6 +29,13 @@
     "Thợ săn": 1,
     "Dân làng": 2
   },
+   "7": {
+    "Tiên tri": 1,
+    "Sói thường": 2,
+    "Bảo vệ": 1,
+    "Phù thuỷ": 1,
+    "Dân làng": 2
+  },
   "8": {
     "Tiên tri": 1,
     "Sói thường": 3,
@@ -30,20 +43,69 @@
     "Thợ săn": 1,
     "Dân làng": 2
   },
+  "8": {
+    "Tiên tri": 1,
+    "Sói thường": 3,
+    "Bảo vệ": 1,
+    "Thợ săn": 1,
+    "Phù thuỷ": 1,
+    "Dân làng": 1
+  },
+  "8": {
+    "Tiên tri": 1,
+    "Sói thường": 2,
+    "Bảo vệ": 1,
+    "Thợ săn": 1,
+    "Dân làng": 3
+  },
+  "8": {
+    "Tiên tri": 1,
+    "Sói thường": 2,
+    "Bảo vệ": 1,
+    "Phù thuỷ": 1,
+    "Dân làng": 3
+  },
   "9": {
     "Tiên tri": 1,
     "Sói thường": 3,
     "Bảo vệ": 1,
     "Thợ săn": 1,
-    "Cupid (Thần Tình Yêu)": 1,
+    "Cupid": 1,
     "Dân làng": 2
+  },
+  "9": {
+    "Tiên tri": 1,
+    "Sói thường": 3,
+    "Bảo vệ": 1,
+    "Thợ săn": 1,
+    "Phù thuỷ": 1,
+    "Cupid": 1,
+    "Dân làng": 1
   },
   "10": {
     "Tiên tri": 1,
     "Sói thường": 4,
     "Bảo vệ": 1,
     "Thợ săn": 1,
-    "Cupid (Thần Tình Yêu)": 1,
+    "Cupid": 1,
+    "Dân làng": 2
+  },
+  "10": {
+    "Tiên tri": 1,
+    "Sói thường": 3,
+    "Bảo vệ": 1,
+    "Thợ săn": 1,
+    "Phù thuỷ": 1,
+    "Cupid": 1,
+    "Dân làng": 2
+  },
+  "10": {
+    "Tiên tri": 1,
+    "Sói thường": 3,
+    "Bảo vệ": 1,
+    "Thợ săn": 1,
+    "Phù thuỷ": 1,
+    "Cô bé": 1,
     "Dân làng": 2
   },
   "11": {
@@ -51,8 +113,54 @@
     "Sói thường": 4,
     "Bảo vệ": 1,
     "Thợ săn": 1,
-    "Cupid (Thần Tình Yêu)": 1,
+    "Cupid": 1,
     "Dân làng": 3
+  },
+  "11": {
+    "Tiên tri": 1,
+    "Sói thường": 3,
+    "Bảo vệ": 1,
+    "Thợ săn": 1,
+    "Cupid": 1,
+    "Dân làng": 3
+  },
+  "11": {
+    "Tiên tri": 1,
+    "Sói thường": 3,
+    "Bảo vệ": 1,
+    "Thợ săn": 1,
+    "Phù thuỷ": 1,
+    "Dân làng": 3
+  },
+  "11": {
+    "Tiên tri": 1,
+    "Sói thường": 2,
+    "Sói con": 1,
+    "Bảo vệ": 1,
+    "Thợ săn": 1,
+    "Phù thuỷ": 1,
+    "Dân làng": 3
+  },
+  "11": {
+    "Tiên tri": 1,
+    "Sói thường": 2,
+    "Sói con": 1,
+    "Bảo vệ": 1,
+    "Thợ săn": 1,
+    "Phù thuỷ": 1,
+    "Cupid": 1,
+    "Dân làng": 2
+  },
+  "11": {
+    "Tiên tri": 1,
+    "Sói thường": 2,
+    "Sói con": 1,
+    "Bảo vệ": 1,
+    "Thợ săn": 1,
+    "Phù thuỷ": 1,
+    "Cupid": 1,
+    "Cô bé": 1,
+    "Dân làng": 1
   },
   "12": {
     "Tiên tri": 1,
