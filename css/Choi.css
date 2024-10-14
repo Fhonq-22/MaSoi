@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* Cấu hình cơ bản */
 body {
     font-family: Arial, sans-serif;
@@ -156,3 +157,163 @@ footer p {
         font-size: 14px;
     }
 }
+=======
+/* Cấu hình cơ bản */
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+}
+
+/* Container chính */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: var(--button-bg);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Header */
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    color: var(--header-color);
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 18px;
+}
+
+/* Phần thông tin cấu hình */
+#game-config {
+    background-color: var(--button-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+}
+
+/* Hàng chứa các nhân vật */
+.config-row {
+    display: flex;
+    justify-content: flex-start; /* Canh trái */
+    flex-wrap: wrap; /* Nếu không đủ chỗ sẽ xuống hàng */
+    gap: 15px; /* Khoảng cách giữa các nhân vật */
+}
+
+/* Hiển thị từng nhân vật và số lượng */
+.config-item {
+    display: flex;
+    align-items: center;
+    background-color: var(--background-color);
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    padding: 10px 15px;
+    color: var(--highlight-color);
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.config-item:hover {
+    background-color: var(--button-hover-bg);
+    cursor: pointer;
+}
+
+.config-item .role-name {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.config-item .role-count {
+    background-color: var(--button-bg);
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: var(--text-color);
+}
+
+/* Khu vực ghi lại hoạt động */
+.activity-log {
+    background-color: var(--background-color);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.activity-log h2 {
+    color: var(--header-color);
+    font-size: 20px;
+}
+
+#activity-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+#activity-list li {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: var(--button-hover-bg);
+    border-radius: 5px;
+}
+
+/* Thẻ nhân vật của người chơi */
+.player-card {
+    background-color: var(--button-bg);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    margin-top: 20px;
+}
+
+.player-card h2 {
+    color: var(--header-color);
+    font-size: 20px;
+}
+
+.role-card {
+    background-color: var(--highlight-color);
+    padding: 20px;
+    border-radius: 10px;
+    color: var(--background-color);
+    font-size: 24px;
+    text-align: center;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: var(--button-bg);
+    border-top: 1px solid var(--border-color);
+}
+
+footer p {
+    color: var(--text-color);
+    font-size: 16px;
+}
+
+/* Responsive: Điều chỉnh khoảng cách cho màn hình nhỏ */
+@media (max-width: 768px) {
+    .config-row {
+        gap: 10px;
+    }
+
+    .config-item {
+        padding: 8px 12px;
+        font-size: 14px;
+    }
+}
+>>>>>>> bbe954e (first upload)
