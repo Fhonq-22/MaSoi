@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 {
   "vai_tro_phu": [
     {
@@ -15,21 +14,3 @@
     }
   ]
 }
-=======
-{
-  "vai_tro_phu": [
-    {
-      "ten": "Cảnh sát trưởng",
-      "mo_ta": "Khi bỏ phiếu được tính là 2 phiếu. Nếu chết, cảnh sát trưởng có thể chuyển quyền cho người khác.",
-      "diem": 2,
-      "hinh_anh": "../MaSoi/libs/img/CanhSatTruong.jpg"
-    },
-    {
-      "ten": "Cặp đôi khác phe yêu nhau",
-      "mo_ta": "Cặp đôi này được Cupid ghép đôi và trở thành phe thứ ba với nhiệm vụ trở thành hai người duy nhất còn sống.",
-      "diem": -3,
-      "hinh_anh": "../MaSoi/libs/img/CapDoiKhacPhe.jpg"
-    }
-  ]
-}
->>>>>>> bbe954e (first upload)
