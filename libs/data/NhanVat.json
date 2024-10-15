@@ -25,8 +25,8 @@
       "hinh_anh": "../MaSoi/libs/img/ThoSan.jpg"
     },
     {
-      "ten": "Phù Thủy",
-      "mo_ta": "Phù Thủy có thể dùng lọ thuốc giải để cứu người bị sói cắn hoặc dùng lọ thuốc độc để giết người. Mỗi lọ chỉ được dùng 1 lần.",
+      "ten": "Phù thủy",
+      "mo_ta": "Phù thủy có thể dùng lọ thuốc giải để cứu người bị sói cắn hoặc dùng lọ thuốc độc để giết người. Mỗi lọ chỉ được dùng 1 lần.",
       "diem": 4,
       "hinh_anh": "../MaSoi/libs/img/PhuThuy.jpg"
     },
@@ -37,7 +37,7 @@
       "hinh_anh": "../MaSoi/libs/img/Cupid.jpg"
     },
     {
-      "ten": "Cô Bé",
+      "ten": "Cô bé",
       "mo_ta": "Có thể nhìn trộm vào ban đêm để biết ai là Ma sói. Tuy nhiên, nếu bị Ma sói phát hiện, Cô bé có thể bị giết.",
       "diem": 2,
       "hinh_anh": "../MaSoi/libs/img/CoBe.jpg"
