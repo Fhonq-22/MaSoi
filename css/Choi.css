@@ -42,6 +42,10 @@ header p {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     margin-bottom: 20px;
 }
+#game-config h2 {
+    text-align: center;
+    margin-top: 0;
+}
 
 /* Hàng chứa các nhân vật */
 .config-row {
