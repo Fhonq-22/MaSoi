@@ -160,3 +160,37 @@ footer p {
         font-size: 14px;
     }
 }
+
+
+.player-controls {
+    background-color: var(--button-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 15px;
+    display: flex;
+    flex-wrap: wrap; /* Cho phép các phần tử tự động xuống dòng */
+    justify-content: center; /* Căn giữa các nút trong hàng */
+}
+
+.player-controls h3 {
+    margin: 0;
+    margin-bottom: 10px;
+    color: var(--header-color);
+    width: 100%; /* Đảm bảo tiêu đề chiếm toàn bộ chiều ngang */
+}
+
+.control-button {
+    background-color: var(--highlight-color);
+    color: var(--text-color);
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    margin: 5px; /* Tạo khoảng cách giữa các nút */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.control-button:hover {
+    background-color: var(--button-hover-bg);
+}
+

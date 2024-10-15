@@ -5,8 +5,13 @@ document.addEventListener('DOMContentLoaded', () => {
     let dsNguoiChoi = []; // Danh sách tất cả người chơi
     let ktSongCon = [];
     let dsLoaiMoiDem = [];
-    let nguoiChoiBiCan = null;
+    let nguoiBiSoiCan = null;
     let nguoiDuocBaoVe = null;
+    let daSuDungThuocGiai = false;
+    let daSuDungThuocDoc = false;
+    let nguoiBiDauDoc = null;
+    let nguoiDuocThuocCuu = null;
+    let nguoiBiBanTen = null;
     let thamSo = layThamSoURL();
     let duLieuCauHinh = giaiMaCauHinh(thamSo.cauHinh);
     // let loaiTroChoi = thamSo.loaiTroChoi;
@@ -108,32 +113,83 @@ document.addEventListener('DOMContentLoaded', () => {
         return chiSoCanhSatTruong;
     }
 
+    function hienThiDieuKhien(tieuDe, dsLuaChon, callback) {
+        const khuVucDieuKhien = document.getElementById('player-controls');
+        
+        // Tạo ID ngẫu nhiên cho nội dung điều khiển
+        const uniqueId = 'control-area-' + Math.random().toString(36).slice(2, 11); // Thay thế substr bằng slice
+        
+        // Tạo div cho khu vực điều khiển
+        const controlAreaDiv = document.createElement('div');
+        controlAreaDiv.id = uniqueId; // Gán ID cho div chứa điều khiển
+    
+        const tieuDeDiv = document.createElement('h3');
+        tieuDeDiv.textContent = tieuDe;
+        controlAreaDiv.appendChild(tieuDeDiv);
+    
+        dsLuaChon.forEach((luaChon, index) => {
+            const nutLuaChon = document.createElement('button');
+            nutLuaChon.textContent = luaChon.ten;
+            nutLuaChon.classList.add('control-button');
+    
+            nutLuaChon.addEventListener('click', () => {
+                callback(index);
+                
+                // Xoá khu vực điều khiển bằng ID của nó
+                const areaToRemove = document.getElementById(uniqueId);
+                if (areaToRemove) {
+                    areaToRemove.remove(); // Xoá toàn bộ khu vực điều khiển này
+                }
+            });
+    
+            controlAreaDiv.appendChild(nutLuaChon);
+        });
+    
+        // Thêm khu vực điều khiển vào khu vực chính
+        khuVucDieuKhien.appendChild(controlAreaDiv);
+    }
+    
+    
+
     function tromThe(){
         ghepDoi();
     }
 
     function ghepDoi() {
         const dsNguoiChoiConSong = layNguoiChoiConSong();
+    
         if (dsNguoiChoiConSong.some(player => player.vaiTro === 'Cupid')) {
             if (vaiTroNguoiChoi === 'Cupid') {
                 let selectedPlayers = [];
-                while (selectedPlayers.length < 2) {
-                    const chiSoNguoiChoi = prompt(`Chọn số người chơi để ghép đôi (1 - ${dsNguoiChoiConSong.length}):`);
-                    const index = parseInt(chiSoNguoiChoi) - 1;
-
-                    if (index >= 0 && index < dsNguoiChoiConSong.length && !selectedPlayers.includes(dsNguoiChoiConSong[index])) {
-                        selectedPlayers.push(dsNguoiChoiConSong[index]);
-                    } else {
-                        alert('Số người chơi không hợp lệ hoặc đã được chọn.');
+    
+                // Chuyển đổi danh sách người chơi thành các tùy chọn lựa chọn
+                const dsLuaChon = dsNguoiChoiConSong.map(player => ({
+                    ten: `Player${player.soThuTu}`,
+                    giaTri: player
+                }));
+    
+                // Hiển thị các lựa chọn cho người chơi Cupid
+                hienThiDieuKhien('Cupid, chọn hai người chơi để ghép đôi', dsLuaChon, (index) => {
+                    const nguoiChoiDuocChon = dsLuaChon[index].giaTri;
+    
+                    // Kiểm tra nếu người chơi chưa được chọn
+                    if (!selectedPlayers.includes(nguoiChoiDuocChon)) {
+                        selectedPlayers.push(nguoiChoiDuocChon);
+                        themHoatDong(`Cupid đã chọn Player${nguoiChoiDuocChon.soThuTu}`, 'var(--button-bg)', 'var(--border-color)');
+    
+                        // Khi đã chọn đủ 2 người chơi, tiến hành ghép đôi
+                        if (selectedPlayers.length === 2) {
+                            selectedPlayers.forEach(player => {
+                                player.isCoupled = true;
+                            });
+    
+                            themHoatDong(`Cupid đã ghép đôi Player${selectedPlayers[0].soThuTu} và Player${selectedPlayers[1].soThuTu}`, 'var(--button-bg)', 'var(--border-color)');
+                            nhinTromSoi(); // Tiếp tục với hành động tiếp theo
+                        }
                     }
-                }
-
-                selectedPlayers.forEach(player => {
-                    player.isCoupled = true;
                 });
-
-                themHoatDong(`Cupid đã ghép đôi Player${selectedPlayers[0].soThuTu} và Player${selectedPlayers[1].soThuTu}`, 'var(--button-bg)', 'var(--border-color)');
             } else {
+                // Trường hợp Cupid tự động ghép đôi ngẫu nhiên
                 let randomIndexes = [];
                 while (randomIndexes.length < 2) {
                     let randomIndex = Math.floor(Math.random() * dsNguoiChoiConSong.length);
@@ -141,18 +197,21 @@ document.addEventListener('DOMContentLoaded', () => {
                         randomIndexes.push(randomIndex);
                     }
                 }
-
+    
                 let player1 = dsNguoiChoiConSong[randomIndexes[0]];
                 let player2 = dsNguoiChoiConSong[randomIndexes[1]];
-
+    
                 player1.isCoupled = true;
                 player2.isCoupled = true;
-
-                themHoatDong(`Cupid đã ghép đôi ngẫu nhiên ${player1.soThuTu} và ${player2.soThuTu}`, 'var(--button-bg)', 'var(--border-color)');
+    
+                themHoatDong(`Cupid đã ghép đôi ngẫu nhiên Player${player1.soThuTu} và Player${player2.soThuTu}`, 'var(--button-bg)', 'var(--border-color)');
+                nhinTromSoi();
             }
         }
-        nhinTromSoi();
-    }
+        else{
+            nhinTromSoi();
+        }
+    }    
     
     function nhinTromSoi(){
         soiTanCong();
@@ -160,82 +219,188 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function soiTanCong() {
         const dsNguoiChoiConSong = layNguoiChoiConSong();
+    
         if (vaiTroNguoiChoi.includes('Sói')) {
             const cacSoiKhac = dsNguoiChoiConSong
                 .filter(nguoiChoi => nguoiChoi.vaiTro.includes('Sói') && nguoiChoi.soThuTu !== chiSoNguoiChoi + 1)
                 .map(nguoiChoi => nguoiChoi.soThuTu);
-
+    
             themHoatDong('Các sói khác: ' + cacSoiKhac.join(', '), 'var(--button-bg)', 'var(--border-color)');
             themHoatDong('Bạn có thể cắn người chơi khác sau 10s', 'var(--button-bg)', 'var(--border-color)');
+    
+            // Đợi 10 giây trước khi cho phép tấn công
             setTimeout(() => {
-                const chiSoMucTieu = prompt('Bạn là sói, chọn số người chơi để cắn (1 - ' + dsNguoiChoiConSong.length + '):') - 1;
-
-                if (chiSoMucTieu >= 0 && chiSoMucTieu < dsNguoiChoiConSong.length) {
-                    nguoiChoiBiCan = dsNguoiChoiConSong[chiSoMucTieu];
-                    
-                    themHoatDong('Sói đã cắn Player' + nguoiChoiBiCan.soThuTu, 'var(--button-bg)', 'var(--border-color)');
-                    baoVe();
-                } else {
-                    themHoatDong('Lỗi: Số người chơi không hợp lệ.', 'var(--button-bg)', 'var(--border-color)');
-                    baoVe();
-                }
-            }, 1000);
+                const dsLuaChon = dsNguoiChoiConSong
+                    .map(player => ({
+                        ten: `Player${player.soThuTu}`,
+                        giaTri: player
+                    }));
+    
+                hienThiDieuKhien('Bạn là sói, chọn người chơi để cắn:', dsLuaChon, (index) => {
+                    nguoiBiSoiCan = dsLuaChon[index].giaTri;
+    
+                    themHoatDong('Sói đã cắn Player' + nguoiBiSoiCan.soThuTu, 'var(--button-bg)', 'var(--border-color)');
+                    baoVe(); // Tiếp tục với hành động tiếp theo
+                });
+            }, 10000); // Đợi 10 giây
         } else {
+            // Trường hợp sói tự động tấn công ngẫu nhiên
             const chiSoNgauNhien = Math.floor(Math.random() * dsNguoiChoiConSong.length);
-            nguoiChoiBiCan = dsNguoiChoiConSong[chiSoNgauNhien];
-            themHoatDong('Sói đã tấn công Player' + nguoiChoiBiCan.soThuTu, 'var(--button-bg)', 'var(--border-color)');
+            nguoiBiSoiCan = dsNguoiChoiConSong[chiSoNgauNhien];
+            themHoatDong('Sói đã tấn công Player' + nguoiBiSoiCan.soThuTu, 'var(--button-bg)', 'var(--border-color)');
             baoVe();
         }
-    }
-
+    }    
 
     function baoVe() {
         if (dsNguoiChoi.some(player => player.vaiTro === 'Bảo vệ')) {
             if (vaiTroNguoiChoi === 'Bảo vệ') {
-                const index = prompt(`Chọn số người chơi để bảo vệ (1 - ${dsNguoiChoi.length}):`) - 1;
+                const dsLuaChon = dsNguoiChoi
+                    .filter((_, index) => ktSongCon[index] === 1) // Lọc những người chơi còn sống
+                    .map(player => ({
+                        ten: `Player${player.soThuTu}`,
+                        giaTri: player
+                    }));
     
-                if (index >= 0 && index < dsNguoiChoi.length && ktSongCon[index] === 1) {
-                    nguoiDuocBaoVe = dsNguoiChoi[index];
-                    
+                hienThiDieuKhien('Bảo vệ, chọn người chơi để bảo vệ:', dsLuaChon, (index) => {
+                    nguoiDuocBaoVe = dsLuaChon[index].giaTri;
+    
                     themHoatDong(`Bảo vệ đã bảo vệ Player${nguoiDuocBaoVe.soThuTu}`, 'var(--button-bg)', 'var(--border-color)');
-                } else {
-                    themHoatDong('Lỗi: Số người chơi không hợp lệ hoặc người chơi đã chết.', 'var(--button-bg)', 'var(--border-color)');
-                }
+                    suDungThuoc(); // Tiếp tục với hành động tiếp theo
+                });
             } else {
+                // Trường hợp bảo vệ tự động bảo vệ ngẫu nhiên
                 const dsConSong = dsNguoiChoi.filter((_, index) => ktSongCon[index] === 1);
                 const randomIndex = Math.floor(Math.random() * dsConSong.length);
                 nguoiDuocBaoVe = dsConSong[randomIndex];
                 
                 themHoatDong(`Bảo vệ đã bảo vệ Player${nguoiDuocBaoVe.soThuTu}`, 'var(--button-bg)', 'var(--border-color)');
+                suDungThuoc();
             }
+        } else {
+            suDungThuoc();
         }
+    }    
     
-        suDungThuoc();
-    }
-    
-    
-    function suDungThuoc(){
-        soiMaSoi();
-    }
+    function suDungThuoc() {
+        let daClickThuocGiai = false;
+        let daClickThuocDoc = false;
+        const phuThuy = dsNguoiChoi.find(player => player.vaiTro === 'Phù thuỷ');
 
+        if (phuThuy) { 
+            if (vaiTroNguoiChoi === 'Phù thuỷ') {
+                if (!daSuDungThuocGiai) {
+                    console.log("Hiển thị điều khiển thuốc giải");
+                    hienThiDieuKhien('Phù thủy, bạn có muốn sử dụng thuốc giải để cứu người bị sói cắn không?', [
+                        { ten: 'Không', giaTri: false },
+                        { ten: 'Có', giaTri: true }
+                    ], (choice) => {
+                        console.log(`Chọn thuốc giải: ${choice}`);
+                        if (choice) {
+                            if (nguoiBiSoiCan) {
+                                nguoiBiSoiCan.isProtected = true;
+                                themHoatDong(`Phù thủy đã sử dụng thuốc giải để cứu Player${nguoiBiSoiCan.soThuTu}`, 'var(--button-bg)', 'var(--border-color)');
+                                daSuDungThuocGiai = true;
+                            }
+                        }
+                        daClickThuocGiai = true;
+                        if(daClickThuocDoc){
+                            soiMaSoi();
+                        }
+                    });
+                }
+
+                if (!daSuDungThuocDoc){
+                    // Hỏi thuốc độc nếu đã sử dụng thuốc giải
+                    console.log("Hiển thị điều khiển thuốc độc");
+                    hienThiDieuKhien('Phù thủy, bạn có muốn sử dụng thuốc độc để giết một người chơi không?', [
+                        { ten: 'Không', giaTri: false },
+                        { ten: 'Có', giaTri: true }
+                    ], (choice) => {
+                        console.log(`Chọn thuốc độc: ${choice}`);
+                        if (choice) {
+                            const dsLuaChon = dsNguoiChoi
+                                .filter((player, index) => index !== phuThuy.soThuTu - 1) // Loại bỏ Phù thủy
+                                .map(player => ({
+                                    ten: `Player${player.soThuTu}`,
+                                    giaTri: player
+                                }));
+                            console.log(dsLuaChon);
+                            // Kiểm tra nếu có người chơi để chọn
+                            if (dsLuaChon.length > 0) {
+                                hienThiDieuKhien('Phù thủy, chọn số người chơi để sử dụng thuốc độc:', dsLuaChon, (index) => {
+                                    const nguoiBiHai = dsLuaChon[index].giaTri;
+                                    ktSongCon[nguoiBiHai.soThuTu - 1] = 0; // Người bị trúng thuốc độc
+                                    themHoatDong(`Phù thủy đã sử dụng thuốc độc để giết Player${nguoiBiHai.soThuTu}`, 'var(--button-bg)', 'var(--border-color)');
+                                    daSuDungThuocDoc = true;
+                                });
+                            } else {
+                                console.log("Không có người chơi nào để chọn cho thuốc độc");
+                                soiMaSoi(); // Nếu không có người chơi nào, chuyển sang giai đoạn tiếp theo
+                            }
+                        }
+                        daClickThuocDoc = true;
+                        if(daClickThuocGiai){
+                            soiMaSoi();
+                        }
+                    });
+                }
+            } else {
+                // Logic cho người không phải Phù thủy
+                const nguoiBiCan = dsLoaiMoiDem[0];
+                if (!daSuDungThuocGiai && nguoiBiCan && Math.random() < 0.5) {
+                    nguoiBiCan.isProtected = true;
+                    themHoatDong(`Phù thủy (ngẫu nhiên) đã sử dụng thuốc giải để cứu Player${nguoiBiCan.soThuTu}`, 'var(--button-bg)', 'var(--border-color)');
+                    daSuDungThuocGiai = true;
+                }
+    
+                if (!daSuDungThuocDoc && Math.random() < 0.5) {
+                    const dsConSong = dsNguoiChoi.filter((_, index) => ktSongCon[index] === 1);
+                    const randomIndex = Math.floor(Math.random() * dsConSong.length);
+                    const nguoiBiHai = dsConSong[randomIndex];
+                    ktSongCon[nguoiBiHai.soThuTu - 1] = 0; // Người bị trúng thuốc độc
+                    themHoatDong(`Phù thủy (ngẫu nhiên) đã sử dụng thuốc độc để giết Player${nguoiBiHai.soThuTu}`, 'var(--button-bg)', 'var(--border-color)');
+                    daSuDungThuocDoc = true;
+                }
+                soiMaSoi(); // Chuyển sang giai đoạn tiếp theo
+            }
+        } else {
+            soiMaSoi();
+        }
+    }
+    
+    
+    
+    
     function soiMaSoi() {
         console.log('Vai trò người chơi:', vaiTroNguoiChoi); // Kiểm tra giá trị của vaiTroNguoiChoi
         const dsConSong = layNguoiChoiConSong();
         let nguoiDuocKiemTra;
     
         if (vaiTroNguoiChoi === 'Tiên tri') {
-            const soThuTu = prompt(`Tiên tri, bạn muốn kiểm tra người chơi nào? Nhập số thứ tự (1 - ${dsConSong.length}):`);
-            nguoiDuocKiemTra = dsConSong.find(player => player.soThuTu == soThuTu);
+            const dsLuaChon = dsConSong.map(player => ({
+                ten: `Player${player.soThuTu}`,
+                giaTri: player
+            }));
     
-            if (!nguoiDuocKiemTra) {
-                themHoatDong('Lỗi: Số người chơi không hợp lệ hoặc người chơi đã chết.', 'var(--button-bg)', 'var(--border-color)');
-                return;
-            }
+            hienThiDieuKhien('Tiên tri, bạn muốn kiểm tra người chơi nào?', dsLuaChon, (index) => {
+                nguoiDuocKiemTra = dsLuaChon[index].giaTri;
+    
+                if (!nguoiDuocKiemTra) {
+                    themHoatDong('Lỗi: Số người chơi không hợp lệ hoặc người chơi đã chết.', 'var(--button-bg)', 'var(--border-color)');
+                    return;
+                }
+    
+                kiemTraVaiTro(nguoiDuocKiemTra);
+            });
         } else {
             const randomIndex = Math.floor(Math.random() * dsConSong.length);
             nguoiDuocKiemTra = dsConSong[randomIndex];
+            kiemTraVaiTro(nguoiDuocKiemTra);
         }
+    }
     
+    function kiemTraVaiTro(nguoiDuocKiemTra) {
         if (nguoiDuocKiemTra.vaiTro.includes('Sói')) {
             themHoatDong(`Player${nguoiDuocKiemTra.soThuTu} là Sói!`, 'var(--button-bg)', 'var(--border-color)');
         } else {
@@ -243,11 +408,39 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     
         chonNguoiChetTheo();
-    }      
+    }          
 
-    function chonNguoiChetTheo(){
-        canSoiThuong();
-    }
+    function chonNguoiChetTheo() {
+        const dsConSong = layNguoiChoiConSong(); // Lấy danh sách người chơi còn sống
+        let nguoiDuocChon;
+    
+        if (vaiTroNguoiChoi === 'Thợ săn') {
+            const dsLuaChon = dsConSong.map(player => ({
+                ten: `Player${player.soThuTu}`,
+                giaTri: player
+            }));
+    
+            // Hiển thị điều khiển để chọn người chơi
+            hienThiDieuKhien('Thợ săn, bạn muốn chọn người nào để chết theo?', dsLuaChon, (index) => {
+                nguoiDuocChon = dsLuaChon[index].giaTri;
+                // Đánh dấu người được chọn là đã chết
+                ktSongCon[nguoiDuocChon.soThuTu - 1] = 0; 
+                themHoatDong(`Thợ săn đã chọn Player${nguoiDuocChon.soThuTu} để chết theo.`, 'var(--button-bg)', 'var(--border-color)');
+                canSoiThuong(); // Gọi hàm tiếp theo
+            });
+    
+        } else {
+            // Chọn ngẫu nhiên một người chơi còn sống
+            const randomIndex = Math.floor(Math.random() * dsConSong.length);
+            nguoiDuocChon = dsConSong[randomIndex];
+            
+            // Đánh dấu người được chọn là đã chết
+            ktSongCon[nguoiDuocChon.soThuTu - 1] = 0; 
+            themHoatDong(`Thợ săn (ngẫu nhiên) chọn Player${nguoiDuocChon.soThuTu} để chết.`, 'var(--button-bg)', 'var(--border-color)');
+            
+            canSoiThuong(); // Gọi hàm tiếp theo
+        }
+    }    
     
     function canSoiThuong(){
         lamMoi();
@@ -255,8 +448,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function lamMoi(){
-        ktSongCon[dsNguoiChoi.indexOf(nguoiChoiBiCan)] = 0;
-        dsLoaiMoiDem.push(nguoiChoiBiCan);
+        ktSongCon[dsNguoiChoi.indexOf(nguoiBiSoiCan)] = 0;
+        dsLoaiMoiDem.push(nguoiBiSoiCan);
         nguoiDuocBaoVe.isProtected = true;
         dsLoaiMoiDem = dsLoaiMoiDem.filter(player => player.soThuTu !== nguoiDuocBaoVe.soThuTu);
         
@@ -323,25 +516,32 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
             const ketQuaTongHop = ketQuaBoPhieu.join('<br>');
             themHoatDong(`Kết quả bỏ phiếu:<br>${ketQuaTongHop}`, 'var(--button-bg)', 'var(--border-color)');
-            if(dsConSong.some(n => n.soThuTu === 1)){
-                const boPhieuPlayer1 = setTimeout(() => {
-                    const nguoiBauPlayer1 = prompt("Bạn muốn bỏ phiếu cho ai? Nhập số thứ tự của người chơi:");
-                    if (nguoiBauPlayer1 && dsConSong.some(n => n.soThuTu == nguoiBauPlayer1)) {
-                        ketQuaBoPhieu.push(`- Bạn đã bỏ phiếu cho Player${nguoiBauPlayer1}`);
-                        soPhieu[nguoiBauPlayer1]++;
-                    } else {
-                        ketQuaBoPhieu.push(`- Bạn đã bỏ phiếu trắng`);
-                    }
             
-                    themHoatDong(`${ketQuaBoPhieu[ketQuaBoPhieu.length - 1]}`, 'var(--button-bg)', 'var(--border-color)');
-                    treoCo(soPhieu, dsNguoiChoi);
+            if(dsConSong.some(n => n.soThuTu === 1)){
+                setTimeout(() => {
+                    // Tạo danh sách các lựa chọn cho người chơi
+                    const dsLuaChon = dsConSong.map(n => ({ ten: `Player ${n.soThuTu}` }));
+    
+                    // Gọi hàm hienThiDieuKhien với danh sách lựa chọn
+                    hienThiDieuKhien("Bạn muốn bỏ phiếu cho ai?", dsLuaChon, (nguoiBauPlayer1) => {
+                        if (nguoiBauPlayer1 >= 0 && nguoiBauPlayer1 < dsLuaChon.length) {
+                            const nguoiChon = dsConSong[nguoiBauPlayer1];
+                            ketQuaBoPhieu.push(`- Bạn đã bỏ phiếu cho Player${nguoiChon.soThuTu}`);
+                            soPhieu[nguoiChon.soThuTu]++;
+                        } else {
+                            ketQuaBoPhieu.push(`- Bạn đã bỏ phiếu trắng`);
+                        }
+            
+                        themHoatDong(`${ketQuaBoPhieu[ketQuaBoPhieu.length - 1]}`, 'var(--button-bg)', 'var(--border-color)');
+                        treoCo(soPhieu, dsNguoiChoi);
+                    });
                 }, 1000);
             }
             else{
                 treoCo(soPhieu, dsNguoiChoi);
             }
         }, 5000);        
-    }    
+    }        
     
     function treoCo(soPhieu, dsNguoiChoi) {
         let maxPhieu = 0;
