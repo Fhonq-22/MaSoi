@@ -14,17 +14,17 @@ document.addEventListener('DOMContentLoaded', () => {
     let nguoiBiBanTen = null;
     let sttNgay = 0;
     let sttDem = 0;
-    const soundAnTrom = new Audio('../MaSoi/libs/sound/AnTrom.mp3');
-    const soundGhepDoi = new Audio('../MaSoi/libs/sound/GhepDoi.wav');
-    const soundSoiHu = new Audio('../MaSoi/libs/sound/SoiHu.wav');
-    const soundBaoVe = new Audio('../MaSoi/libs/sound/BaoVe.wav');
-    const soundCheThuoc= new Audio('../MaSoi/libs/sound/CheThuoc.wav');
-    const soundTienTri = new Audio('../MaSoi/libs/sound/TienTri.wav');
-    const soundBanSung= new Audio('../MaSoi/libs/sound/BanSung.wav');
-    const soundBanNgay = new Audio('../MaSoi/libs/sound/BanNgay.wav');
-    const soundBanDem= new Audio('../MaSoi/libs/sound/BanDem.wav');
-    const soundChienThang = new Audio('../MaSoi/libs/sound/ChienThang.wav');
-    const soundThatBai = new Audio('../MaSoi/libs/sound/ThatBai.wav');
+    const soundAnTrom = new Audio('./libs/sound/AnTrom.mp3');
+    const soundGhepDoi = new Audio('./libs/sound/GhepDoi.wav');
+    const soundSoiHu = new Audio('./libs/sound/SoiHu.wav');
+    const soundBaoVe = new Audio('./libs/sound/BaoVe.wav');
+    const soundCheThuoc= new Audio('./libs/sound/CheThuoc.wav');
+    const soundTienTri = new Audio('./libs/sound/TienTri.wav');
+    const soundBanSung= new Audio('./libs/sound/BanSung.wav');
+    const soundBanNgay = new Audio('./libs/sound/BanNgay.wav');
+    const soundBanDem= new Audio('./libs/sound/BanDem.wav');
+    const soundChienThang = new Audio('./libs/sound/ChienThang.wav');
+    const soundThatBai = new Audio('./libs/sound/ThatBai.wav');
     let thamSo = layThamSoURL();
     let duLieuCauHinh = giaiMaCauHinh(thamSo.cauHinh);
     // let loaiTroChoi = thamSo.loaiTroChoi;
@@ -166,14 +166,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function tromThe(){
         soundAnTrom.play();
-        ghepDoi();
+        setTimeout(ghepDoi,5000);
     }
 
     function ghepDoi() {
-        soundGhepDoi.play();
         const dsNguoiChoiConSong = layNguoiChoiConSong();
-    
+        
         if (dsNguoiChoiConSong.some(player => player.vaiTro === 'Cupid')) {
+            soundGhepDoi.play();
             if (vaiTroNguoiChoi === 'Cupid') {
                 let selectedPlayers = [];
     
@@ -242,7 +242,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 .map(nguoiChoi => nguoiChoi.soThuTu);
     
             themHoatDong('Các sói khác: ' + cacSoiKhac.join(', '), 'var(--button-bg)', 'var(--border-color)');
-            themHoatDong('Bạn có thể cắn người chơi khác sau 10s', 'var(--button-bg)', 'var(--border-color)');
+            themHoatDong('Bạn có thể cắn người chơi khác sau 5s', 'var(--button-bg)', 'var(--border-color)');
     
             // Đợi 10 giây trước khi cho phép tấn công
             setTimeout(() => {
@@ -256,23 +256,23 @@ document.addEventListener('DOMContentLoaded', () => {
                     nguoiBiSoiCan = dsLuaChon[index].giaTri;
     
                     themHoatDong('Sói đã cắn Player' + nguoiBiSoiCan.soThuTu, 'var(--button-bg)', 'var(--border-color)');
-                    baoVe(); // Tiếp tục với hành động tiếp theo
+                    setTimeout(baoVe,500); // Tiếp tục với hành động tiếp theo
                 });
-            }, 10000); // Đợi 10 giây
+            }, 5000);
         } else {
             // Trường hợp sói tự động tấn công ngẫu nhiên
             const chiSoNgauNhien = Math.floor(Math.random() * dsNguoiChoiConSong.length);
             nguoiBiSoiCan = dsNguoiChoiConSong[chiSoNgauNhien];
             themHoatDong('Sói đã tấn công Player' + nguoiBiSoiCan.soThuTu, 'var(--button-bg)', 'var(--border-color)');
-            baoVe();
+            setTimeout(baoVe,5000);
         }
     }    
 
     function baoVe() {
-        soundBaoVe.play();
         const dsNguoiChoiConSong = layNguoiChoiConSong();
-
+        
         if (dsNguoiChoiConSong.some(player => player.vaiTro === 'Bảo vệ')) {
+            soundBaoVe.play();
             if (vaiTroNguoiChoi === 'Bảo vệ') {
                 const dsLuaChon = dsNguoiChoi
                     .filter((_, index) => ktSongCon[index] === 1) // Lọc những người chơi còn sống
@@ -285,7 +285,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     nguoiDuocBaoVe = dsLuaChon[index].giaTri;
     
                     themHoatDong(`Bảo vệ đã bảo vệ Player${nguoiDuocBaoVe.soThuTu}`, 'var(--button-bg)', 'var(--border-color)');
-                    suDungThuoc(); // Tiếp tục với hành động tiếp theo
+                    setTimeout(suDungThuoc,500); // Tiếp tục với hành động tiếp theo
                 });
             } else {
                 // Trường hợp bảo vệ tự động bảo vệ ngẫu nhiên
@@ -294,7 +294,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 nguoiDuocBaoVe = dsConSong[randomIndex];
                 
                 themHoatDong(`Bảo vệ đã bảo vệ Player${nguoiDuocBaoVe.soThuTu}`, 'var(--button-bg)', 'var(--border-color)');
-                suDungThuoc();
+                setTimeout(suDungThuoc,5000);
             }
         } else {
             suDungThuoc();
@@ -302,13 +302,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }    
     
     function suDungThuoc() {
-        soundCheThuoc.play();
         let daClickThuocGiai = false;
         let daClickThuocDoc = false;
         const dsNguoiChoiConSong = layNguoiChoiConSong();
         const phuThuy = dsNguoiChoiConSong.find(player => player.vaiTro === 'Phù thuỷ');
-
+        
         if (phuThuy) { 
+            soundCheThuoc.play();
             if (vaiTroNguoiChoi === 'Phù thuỷ') {
                 if (!daSuDungThuocGiai) {
                     console.log("Hiển thị điều khiển thuốc giải");
@@ -327,7 +327,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
                         daClickThuocGiai = true;
                         if(daClickThuocDoc){
-                            soiMaSoi();
+                            setTimeout(soiMaSoi,500);
                         }
                     });
                 }else{
@@ -357,18 +357,18 @@ document.addEventListener('DOMContentLoaded', () => {
                                     daSuDungThuocDoc = true;
                                     daClickThuocDoc = true;
                                     if(daClickThuocGiai){
-                                        soiMaSoi();
+                                        setTimeout(soiMaSoi,500);
                                     }
                                 });
                             } else {
                                 console.log("Không có người chơi nào để chọn cho thuốc độc");
-                                soiMaSoi(); // Nếu không có người chơi nào, chuyển sang giai đoạn tiếp theo
+                                setTimeout(soiMaSoi,500); // Nếu không có người chơi nào, chuyển sang giai đoạn tiếp theo
                             }
                         }
                         else{
                             daClickThuocDoc = true;
                             if(daClickThuocGiai){
-                                soiMaSoi();
+                                setTimeout(soiMaSoi,500);
                             }
                         }
                     });
@@ -376,7 +376,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     daClickThuocDoc = true;
                 }
                 if(daSuDungThuocGiai && daSuDungThuocDoc){
-                    soiMaSoi();
+                    setTimeout(soiMaSoi,500);
                 }
             } else {
                 if (!daSuDungThuocGiai && nguoiBiSoiCan && Math.random() < 0.5) {
@@ -393,7 +393,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     themHoatDong(`Phù thủy (ngẫu nhiên) đã sử dụng thuốc độc để giết Player${nguoiBiDauDoc.soThuTu}`, 'var(--button-bg)', 'var(--border-color)');
                     daSuDungThuocDoc = true;
                 }
-                soiMaSoi(); // Chuyển sang giai đoạn tiếp theo
+                setTimeout(soiMaSoi,5000); // Chuyển sang giai đoạn tiếp theo
             }
         } else {
             soiMaSoi();
@@ -401,11 +401,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     function soiMaSoi() {
-        soundTienTri.play();
         let nguoiDuocKiemTra;
         const dsNguoiChoiConSong = layNguoiChoiConSong();
-
+        
         if (dsNguoiChoiConSong.some(player => player.vaiTro === 'Tiên tri')) {
+            soundTienTri.play();
             if (vaiTroNguoiChoi === 'Tiên tri') {
                 const dsLuaChon = dsNguoiChoiConSong.map(player => ({
                     ten: `Player${player.soThuTu}`,
@@ -420,12 +420,12 @@ document.addEventListener('DOMContentLoaded', () => {
                         return;
                     }
         
-                    kiemTraVaiTro(nguoiDuocKiemTra);
+                    setTimeout(kiemTraVaiTro(nguoiDuocKiemTra),500);
                 });
             } else {
                 const randomIndex = Math.floor(Math.random() * dsNguoiChoiConSong.length);
                 nguoiDuocKiemTra = dsNguoiChoiConSong[randomIndex];
-                kiemTraVaiTro(nguoiDuocKiemTra);
+                setTimeout(kiemTraVaiTro(nguoiDuocKiemTra),5000);
             }
         }else{
             chonNguoiChetTheo();
@@ -443,10 +443,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }          
 
     function chonNguoiChetTheo() {
-        soundBanSung.play();
         const dsNguoiChoiConSong = layNguoiChoiConSong();
-
+        
         if (dsNguoiChoiConSong.some(player => player.vaiTro === 'Thợ săn')) {
+            soundBanSung.play();
             if (vaiTroNguoiChoi === 'Thợ săn') {
                 const dsLuaChon = dsNguoiChoiConSong.map(player => ({
                     ten: `Player${player.soThuTu}`,
@@ -457,7 +457,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 hienThiDieuKhien('Thợ săn, bạn muốn chọn người nào để chết theo?', dsLuaChon, (index) => {
                     nguoiBiBanTen = dsLuaChon[index].giaTri; 
                     themHoatDong(`Thợ săn đã chọn Player${nguoiBiBanTen.soThuTu} để chết theo.`, 'var(--button-bg)', 'var(--border-color)');
-                    canSoiThuong(); // Gọi hàm tiếp theo
+                    setTimeout(canSoiThuong,500); // Gọi hàm tiếp theo
                 });
         
             } else {
@@ -467,7 +467,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 themHoatDong(`Thợ săn (ngẫu nhiên) chọn Player${nguoiBiBanTen.soThuTu} để chết.`, 'var(--button-bg)', 'var(--border-color)');
                 
-                canSoiThuong(); // Gọi hàm tiếp theo
+                setTimeout(canSoiThuong,5000); // Gọi hàm tiếp theo
             }
         }else{
             canSoiThuong();
@@ -505,7 +505,7 @@ document.addEventListener('DOMContentLoaded', () => {
         soundBanDem.play();
         sttDem++;
         themHoatDong('ĐÊM THỨ ' + sttDem, 'var(--text-color)', 'var(--border-color)');
-        tromThe();
+        setTimeout(tromThe, 2000);
     }
     
     function demNguoiBiLoai(){
@@ -622,12 +622,21 @@ document.addEventListener('DOMContentLoaded', () => {
         sttNgay++;
         themHoatDong('NGÀY THỨ ' + sttNgay, 'var(--text-color)', 'var(--border-color)');
         demNguoiBiLoai();
-        banLuan(); 
+        setTimeout(banLuan,500); 
     }
     
 
     function batDauChoi(){
-        banDem();
+        hienThiDieuKhien('Bắt đầu chơi!', [
+            { ten: 'Không', giaTri: false },
+            { ten: 'Có', giaTri: true }
+        ], (choice) => {
+            if(choice){
+                banDem();
+            }else{
+                setTimeout(batDauChoi, 3000);
+            }
+        });
         // banNgay();
         // ketThucChoi();
     }
@@ -683,6 +692,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (duLieuCauHinh) {
         hienThiThongTinCauHinhVaLoaiTroChoi();
         phanPhatTheNhanVat(duLieuCauHinh);
-        batDauChoi();
+        setTimeout(batDauChoi, 3000);
     }
 });
