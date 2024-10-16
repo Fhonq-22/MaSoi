@@ -14,6 +14,17 @@ document.addEventListener('DOMContentLoaded', () => {
     let nguoiBiBanTen = null;
     let sttNgay = 0;
     let sttDem = 0;
+    const soundAnTrom = new Audio('../libs/sound/AnTrom.mp3');
+    const soundGhepDoi = new Audio('../libs/sound/GhepDoi.wav');
+    const soundSoiHu = new Audio('../libs/sound/SoiHu.wav');
+    const soundBaoVe = new Audio('../libs/sound/BaoVe.wav');
+    const soundCheThuoc= new Audio('../libs/sound/CheThuoc.wav');
+    const soundTienTri = new Audio('../libs/sound/TienTri.wav');
+    const soundBanSung= new Audio('../libs/sound/BanSung.wav');
+    const soundBanNgay = new Audio('../libs/sound/BanNgay.wav');
+    const soundBanDem= new Audio('../libs/sound/BanDem.wav');
+    const soundChienThang = new Audio('../libs/sound/ChienThang.wav');
+    const soundThatBai = new Audio('../libs/sound/ThatBai.wav');
     let thamSo = layThamSoURL();
     let duLieuCauHinh = giaiMaCauHinh(thamSo.cauHinh);
     // let loaiTroChoi = thamSo.loaiTroChoi;
@@ -154,10 +165,12 @@ document.addEventListener('DOMContentLoaded', () => {
     
 
     function tromThe(){
+        soundAnTrom.play();
         ghepDoi();
     }
 
     function ghepDoi() {
+        soundGhepDoi.play();
         const dsNguoiChoiConSong = layNguoiChoiConSong();
     
         if (dsNguoiChoiConSong.some(player => player.vaiTro === 'Cupid')) {
@@ -220,6 +233,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function soiTanCong() {
+        soundSoiHu.play();
         const dsNguoiChoiConSong = layNguoiChoiConSong();
         
         if (vaiTroNguoiChoi.includes('Sói')) {
@@ -255,6 +269,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }    
 
     function baoVe() {
+        soundBaoVe.play();
         const dsNguoiChoiConSong = layNguoiChoiConSong();
 
         if (dsNguoiChoiConSong.some(player => player.vaiTro === 'Bảo vệ')) {
@@ -287,6 +302,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }    
     
     function suDungThuoc() {
+        soundCheThuoc.play();
         let daClickThuocGiai = false;
         let daClickThuocDoc = false;
         const dsNguoiChoiConSong = layNguoiChoiConSong();
@@ -385,6 +401,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     function soiMaSoi() {
+        soundTienTri.play();
         let nguoiDuocKiemTra;
         const dsNguoiChoiConSong = layNguoiChoiConSong();
 
@@ -426,6 +443,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }          
 
     function chonNguoiChetTheo() {
+        soundBanSung.play();
         const dsNguoiChoiConSong = layNguoiChoiConSong();
 
         if (dsNguoiChoiConSong.some(player => player.vaiTro === 'Thợ săn')) {
@@ -484,6 +502,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function banDem() {
+        soundBanDem.play();
         sttDem++;
         themHoatDong('ĐÊM THỨ ' + sttDem, 'var(--text-color)', 'var(--border-color)');
         tromThe();
@@ -599,6 +618,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     
     function banNgay() {
+        soundBanNgay.play();
         sttNgay++;
         themHoatDong('NGÀY THỨ ' + sttNgay, 'var(--text-color)', 'var(--border-color)');
         demNguoiBiLoai();
@@ -626,9 +646,11 @@ document.addEventListener('DOMContentLoaded', () => {
         // Kiểm tra nếu tất cả Sói bị tiêu diệt
         if (soLuongSoi === 0) {
             if (!vaiTroNguoiChoi.includes('Sói')) {
+                soundChienThang.play();
                 console.log('Bạn là Dân làng. Dân làng đã thắng!');
                 hienThiThongBaoKetThuc('Dân làng đã thắng!');
             } else {
+                soundThatBai.play();
                 console.log('Bạn là Sói. Sói đã thua!');
                 hienThiThongBaoKetThuc('Sói đã thua!');
             }
@@ -636,9 +658,11 @@ document.addEventListener('DOMContentLoaded', () => {
         // Kiểm tra nếu số lượng Sói bằng số lượng Dân làng
         else if (soLuongSoi >= soLuongDanLang) {
             if (vaiTroNguoiChoi === 'Sói') {
+                soundChienThang.play();
                 console.log('Bạn là Sói. Sói đã thắng!');
                 hienThiThongBaoKetThuc('Sói đã thắng!');
             } else {
+                soundThatBai.play();
                 console.log('Bạn là Dân làng. Dân làng đã thua!');
                 hienThiThongBaoKetThuc('Dân làng đã thua!');
             }
