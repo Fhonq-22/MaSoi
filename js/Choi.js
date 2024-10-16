@@ -333,15 +333,21 @@ document.addEventListener('DOMContentLoaded', () => {
                                     ktSongCon[nguoiBiHai.soThuTu - 1] = 0; // Người bị trúng thuốc độc
                                     themHoatDong(`Phù thủy đã sử dụng thuốc độc để giết Player${nguoiBiHai.soThuTu}`, 'var(--button-bg)', 'var(--border-color)');
                                     daSuDungThuocDoc = true;
+                                    daClickThuocDoc = true;
+                                    if(daClickThuocGiai){
+                                        soiMaSoi();
+                                    }
                                 });
                             } else {
                                 console.log("Không có người chơi nào để chọn cho thuốc độc");
                                 soiMaSoi(); // Nếu không có người chơi nào, chuyển sang giai đoạn tiếp theo
                             }
                         }
-                        daClickThuocDoc = true;
-                        if(daClickThuocGiai){
-                            soiMaSoi();
+                        else{
+                            daClickThuocDoc = true;
+                            if(daClickThuocGiai){
+                                soiMaSoi();
+                            }
                         }
                     });
                 }
@@ -520,7 +526,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if(dsConSong.some(n => n.soThuTu === 1)){
                 setTimeout(() => {
                     // Tạo danh sách các lựa chọn cho người chơi
-                    const dsLuaChon = dsConSong.map(n => ({ ten: `Player ${n.soThuTu}` }));
+                    const dsLuaChon = dsConSong.map(n => ({ ten: `Player${n.soThuTu}` }));
     
                     // Gọi hàm hienThiDieuKhien với danh sách lựa chọn
                     hienThiDieuKhien("Bạn muốn bỏ phiếu cho ai?", dsLuaChon, (nguoiBauPlayer1) => {
