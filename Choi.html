@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chơi</title>
+    <link rel="shortcut icon" href="LOGO.ico" type="image/x-icon">
     <link rel="stylesheet" href="./css/root.css">
     <link rel="stylesheet" href="./css/Choi.css">
     <script src="./js/Choi.js" defer></script>
@@ -33,6 +34,22 @@
         <section id="player-info">
             <!-- Thẻ nhân vật của người chơi sẽ được hiển thị ở đây -->
         </section>
+
+        <div id="result-modal" class="modal">
+            <div class="modal-content">
+                <span id="close-button" class="close">&times;</span>
+                <div id="game-result" class="game-result">
+                    <!-- Kết quả trò chơi sẽ được hiển thị ở đây -->
+                </div>
+                <div class="modal-buttons">
+                    <button id="review-button">Xem lại</button>
+                    <button id="restart-button">Chơi lại</button>
+                    <button id="config-button">Chọn lại cấu hình</button>
+                    <button id="home-button">Trang chủ</button>
+                    <button id="share-button">Chia sẻ</button>
+                </div>
+            </div>
+        </div>
         
         <footer>
             <p>&copy; 2024 by fhonq.22</p>

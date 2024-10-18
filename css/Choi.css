@@ -197,3 +197,69 @@ footer p {
 
 
 
+
+
+
+
+.modal {
+    display: none; /* Ẩn modal theo mặc định */
+    position: fixed; /* Đặt vị trí cố định */
+    z-index: 1000; /* Z-index cao hơn các phần khác */
+    left: 0;
+    top: 0;
+    width: 100%; /* Chiều rộng đầy đủ */
+    height: 100%; /* Chiều cao đầy đủ */
+    overflow: auto; /* Cuộn nếu cần */
+    background-color: rgba(12, 12, 13, 0.7); /* Nền mờ tối hơn */
+}
+
+.modal-content {
+    background-color: var(--button-bg); /* Nền modal */
+    margin: 10% auto; /* Vị trí ở giữa */
+    padding: 30px; /* Thêm khoảng cách cho nội dung */
+    border-radius: 8px; /* Bo tròn các góc */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Đổ bóng cho modal */
+    width: 80%; /* Kích thước modal */
+    max-width: 500px; /* Giới hạn kích thước tối đa */
+    text-align: center; /* Căn giữa nội dung */
+}
+
+.close {
+    color: #888; /* Màu chữ cho nút đóng */
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    transition: color 0.2s; /* Hiệu ứng chuyển đổi màu sắc */
+}
+
+.close:hover,
+.close:focus {
+    color: var(--highlight-color); /* Màu nổi bật khi hover hoặc focus */
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-buttons {
+    margin-top: 20px;
+}
+
+.modal-buttons button {
+    margin: 10px 5px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px; /* Bo tròn nút */
+    background-color: var(--highlight-color); /* Màu nền nút */
+    color: var(--text-color); /* Màu chữ */
+    cursor: pointer;
+    transition: background-color 0.3s; /* Hiệu ứng chuyển đổi màu nền */
+}
+
+.modal-buttons button:hover {
+    background-color: var(--button-hover-bg); /* Màu nền khi hover */
+}
+
+.modal-buttons button:active {
+    background-color: var(--button-bg); /* Màu nền khi nhấn */
+    transform: scale(0.95); /* Hiệu ứng thu nhỏ khi nhấn */
+}
+
