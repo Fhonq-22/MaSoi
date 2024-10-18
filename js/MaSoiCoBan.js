@@ -66,9 +66,9 @@ function taoDanhSachVaiTro(playerCount) {
                 "Bảo vệ": data.phe_dan_lang,
                 "Tiên tri": data.phe_dan_lang,
                 "Thợ săn": data.phe_dan_lang,
-                "Phù Thủy": data.phe_dan_lang,
+                "Phù thủy": data.phe_dan_lang,
                 "Cupid": data.phe_dan_lang,
-                "Cô Bé": data.phe_dan_lang,
+                "Cô bé": data.phe_dan_lang,
             };
 
             displayCharacterDetails(characters);
