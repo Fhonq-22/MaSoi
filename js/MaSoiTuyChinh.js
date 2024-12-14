@@ -77,8 +77,8 @@ document.addEventListener("DOMContentLoaded", async function () {
                 <h3>${index + 1}</h3>
                 <button onclick="showRole(this)">Hiển thị</button>
                 <div class="role-info" hidden>
-                    <img src="${role.image}" alt="${role.name}">
                     <p>${role.name}</p>
+                    <img src="${role.image}" alt="${role.name}">
                     <button onclick="closeRole(this)">Đóng</button>
                 </div>
             `;
