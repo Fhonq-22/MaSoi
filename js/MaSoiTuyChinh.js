@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
         shuffledRoles.forEach((role, index) => {
             const playerCard = document.createElement("div");
-            playerCard.className = "player-card";
+            playerCard.className = "player-card shine";
             playerCard.innerHTML = `
                 <h3>${index + 1}</h3>
                 <button onclick="showRole(this, ${index + 1})">Xem</button>
@@ -97,6 +97,15 @@ document.addEventListener("DOMContentLoaded", async function () {
     // Hiển thị vai trò khi người chơi nhấn nút
     window.showRole = (button, playerNumber) => {
         const roleInfo = button.parentElement.querySelector(".role-info");
+        const playerCard = button.parentElement; // Thẻ player-card
+
+        // Thêm lớp để kích hoạt hiệu ứng
+        playerCard.classList.add("shine-active");
+        // Xóa lớp sau 1 giây để hiệu ứng hoạt động lại nếu nhấn lần nữa
+        setTimeout(() => {
+            playerCard.classList.remove("shine-active");
+        }, 1000);
+
         roleInfo.hidden = false; // Hiển thị ảnh và tên vai trò
         button.style.display = "none"; // Ẩn nút "Hiển thị vai trò"
         viewedPlayers.add(playerNumber); // Thêm số vào danh sách đã xem

@@ -147,7 +147,7 @@ button:hover {
     align-items: center;
     justify-content: center;
     background-color: var(--button-bg);
-    border: 1px solid var(--border-color);
+    border: 2px solid var(--border-color);
     border-radius: 8px;
     padding: 15px;
     margin: 10px;
@@ -304,4 +304,34 @@ footer p {
     font-size: 14px;
     font-style: italic;
     text-align: center;
+}
+
+/*------------------------------------------hiệu ứng----------------------------------------------------*/
+.shine {
+	position: relative;
+	overflow: hidden;
+}
+.shine::before {
+	position: absolute;
+	top: 0;
+	left: -75%;
+	z-index: 2;
+	display: block;
+	content: '';
+	width: 50%;
+	height: 100%;
+	background: -webkit-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,.3) 100%);
+	background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,.3) 100%);
+	-webkit-transform: skewX(-25deg);
+	transform: skewX(-25deg);
+}
+.shine.shine-active:before {
+	-webkit-animation: shine 1s;
+	animation: shine 1s;
+}
+
+@keyframes shine {
+	100% {
+		left: 125%;
+	}
 }
